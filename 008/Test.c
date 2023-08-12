@@ -24,5 +24,36 @@ int main(void) {
     return 0;
 }*/
     
-    int n, laregst = 0;
-    printf()
+    int n;
+    printf("Enter 5 positive integers: ");
+    scanf("%d", &n);
+
+    int largest = 0;
+
+    if (n > largest)
+        largest = n;
+
+    scanf("%d", &n);
+
+    if (n > largest)
+        largest = n;
+
+    scanf("%d", &n);
+
+    if (n > largest)
+        largest = n;
+    
+    scanf("%d", &n);
+
+    if (n > largest)
+        largest = n;
+
+    scanf("%d", &n);
+
+    if (n > largest)
+        largest = n;
+
+    printf("%d is the largest\n", largest);
+
+    return 0;
+}

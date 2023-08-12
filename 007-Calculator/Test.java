@@ -12,12 +12,14 @@ class Test {
         System.out.println("* 3        Multiplication *");
         System.out.println("* * * * * * * * * * * * * *");
 
+        int a, b;
         System.out.print("Enter 2 integers: ");
-        int a = sc.nextInt();
-        int b = sc.nextInt();
+        a = sc.nextInt();
+        b = sc.nextInt();
 
+        int c;
         System.out.print("Enter a choice: ");
-        int c = sc.nextInt();
+        c = sc.nextInt();
 
         if (c == 1)
             System.out.println(a + " + " + b " = " + (a + b));

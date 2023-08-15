@@ -2,7 +2,7 @@
 
 int main(void) {
     int remaining_amount;
-    printf("Enter an ammount: Rs. ");
+    printf("Enter an amount: Rs. ");
     scanf("%d", &remaining_amount);
 
     printf("\nThe notes requried are :-\n");

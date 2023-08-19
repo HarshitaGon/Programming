@@ -1,4 +1,30 @@
+#include <stdio.h>
 
+int main(void) {
+    double x;
+    printf("Enter the number of units: ");
+    scanf("%lf", &x);
+
+    if (x <= 50.0) {
+        printf("Rs. %.2f\n", (x * 0.5));
+    }
+
+    else if (x <= 150.0) {
+        printf("Rs. %.2f\n", (50.0 * 0.5) + ((x - 50.0) * 0.75));
+    }
+
+    else if (x <= 250.0) {
+        printf("Rs. %.2f\n", (50.0 * 0.5) + (100.0 * 0.75) +
+                             ((x - 150.0) * 1.20));
+    }
+
+    else {
+        printf("Rs. %.2f\n", ((50.0 * 0.5) + (100.0 * 0.75) + (100.0 * 1.20)
+                                + ((x - 250.0) * 1.50)) * 1.2);
+    }
+
+    return 0;
+}
 
 
 

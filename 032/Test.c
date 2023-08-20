@@ -14,7 +14,20 @@ int main(void) {
 
     int start = ll + (ll % 2);
     int end = ul - (ul % 2);
-    
+
+    if (start == end) {
+        printf("%d\n", start);
+    }
+
+    else {
+        while (start < end - 2) {
+            printf("%d, ", start);
+            start = start + 2;
+        }
+
+        printf("%d and %d\n", end - 2, end);
+    }
+
     return 0;
 }
 

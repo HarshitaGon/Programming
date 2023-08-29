@@ -11,10 +11,10 @@ class Test {
         int sum = 0;
 
         while (n > 9) {
-            int rem = n % 10;
+            int last_digit = n % 10;
             n = n / 10;
-            sum = sum + rem;
-            System.out.print(rem + " + ");
+            sum = sum + last_digit;
+            System.out.print(last_digit + " + ");
         }
 
         System.out.println(n + " = " + (sum + n));

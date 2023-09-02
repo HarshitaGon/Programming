@@ -8,11 +8,21 @@ int main(void) {
 
     int i = 1;
 
-    while ((i % n1 != 0) || (i % n2 != 0)) {
-        ++i;
+    if (n1 > n2) {
+        while ((n1 * i) % n2 != 0) {
+            ++i;
+        }
+
+        printf("LCM = %d\n", n1 * i);
     }
 
-    printf("LCM = %d\n", i);
+    else {
+        while ((n2 * i) % n1 != 0) {
+            ++i;
+        }
+
+        printf("LCM = %d\n", n2 * i);
+    }
 
     return 0;
 }

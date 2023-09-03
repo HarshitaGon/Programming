@@ -16,9 +16,12 @@ int main(void) {
 
         int i = 2;
 
-        while (i <= (int) sqrt((double) n)) {
-            if (n % i == 0)
+        // while (i <= (int) sqrt((double) n)) {
+        while (i * i <= n) {
+            if (n % i == 0) {
                 n_is_prime = false;
+                break;
+            }
 
             ++i;
         }

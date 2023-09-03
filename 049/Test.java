@@ -13,11 +13,13 @@ class Test {
         }
 
         else {
-            int i = 1, no_of_factors = 0;
+            int i = 2, no_of_factors = 2;
 
-            while (i <= n) {
-                if (n % i == 0)
+            while (i < n) {
+                if (n % i == 0) {
                     ++no_of_factors;
+                    break;
+                }
 
                 ++i;
             }

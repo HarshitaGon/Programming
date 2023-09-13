@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.lang.Math;
 
 class Test {
     public static void main(String[] args) {
@@ -9,29 +10,32 @@ class Test {
         n = sc.nextInt();
 
         if (n == 1) {
-            System.out.println("1 is niether prime nor composite");
+            System.out.println("1 is an armstrong number");
         }
 
         else {
-            int i = 2, no_of_factors = 2;
+            int temp1 = n, no_digits = 0;
 
-            while (i < n) {
-                if (n % i == 0) {
-                    ++no_of_factors;
-                    break;
-                }
-
-                ++i;
+            while (temp1 > 0) {
+                ++no_digits;
+                temp1 = temp1 / 10;
             }
 
-            if (no_of_factors == 2)
-                System.out.println(n + " is prime");
+            int sum = 0, temp2 = n;
+
+            while (temp2 > 0) {
+                int last_d = temp2 % 10;
+                sum = sum + (int) Math.pow((double) last_d, (double) no_digits);
+                temp2 = temp2 / 10;
+            }
+
+            if (sum == n)
+                System.out.println(n + " is an armstrong number");
             else
-                System.out.println(n + " is composite");
+                System.out.println(n + " is not an armstrong number");
         }
     }
 }
-
 
 
 
@@ -39,14 +43,14 @@ class Test {
 
 1)
 Enter a positive integer: 1
-1 is neither prime nor composite
+1 is an armstrong number
 
 2)
 Enter a positive integer: 10
-10 is composite
+10 is not an armstrong number
 
 3)
-Enter a positive integer: 13
-13 is prime
+Enter a positive integer: 153
+153 is an armstrong number
 
 */

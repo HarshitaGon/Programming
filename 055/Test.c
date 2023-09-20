@@ -2,28 +2,40 @@
 
 int main(void) {
     int n;
-    printf("Enter the number of rows (>= 4): ");
+    printf("Enter the number of rows: ");
     scanf("%d", &n);
+
+    printf("\n");
 
     int i = 1;
 
     while (i <= n) {
         int j = 1;
 
-        while (j <= n) {
-            if ((i == j) || (i == 1) || (j == n))
-                printf("* ");
-            else
+        while(j <= n * 2 - 1) {
+            if ((i > j) || (i + j > n * 2))
                 printf("  ");
+            else
+                printf("* ");
 
             ++j;
         }
 
         printf("\n");
-
         ++i;
     }
-
-    return 0;
-
 }
+
+
+
+/*
+
+Enter the number of rows: 5
+
+* * * * * * * * *
+  * * * * * * *
+    * * * * *
+      * * *
+        *
+
+*/

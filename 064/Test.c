@@ -11,9 +11,9 @@ int main(void) {
         int to_print = i;
         int j = 1;
 
-        while (j <= r) {
+        while (j <= i) {
             printf("%02d ", to_print);
-            to_print = to_print + r;
+            to_print = to_print + (r - j);
 
             ++j;
         }
@@ -22,14 +22,3 @@ int main(void) {
         ++i;
     }
 }
-
-
-/*
-    Enter the number of rows: 5
-
-    01 06 11 16 21
-    02 07 12 17 22
-    03 08 13 18 23
-    04 09 14 19 24
-    05 10 15 20 25
-*/

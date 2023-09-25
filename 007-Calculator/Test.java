@@ -22,17 +22,17 @@ class Test {
         c = sc.nextInt();
 
         if (c == 1)
-            System.out.println(a + " + " + b " = " + (a + b));
+            System.out.println(a + " + " + b + " = " + (a + b));
         else if (c == 2)
-            System.out.println(a + " - " + b " = " + (a - b));
+            System.out.println(a + " - " + b + " = " + (a - b));
         else if (c == 3)
-            System.out.println(a + " * " + b " = " + (a * b));
+            System.out.println(a + " * " + b + " = " + (a * b));
     }
 }
 
 /*
 
-* * * * * * * * * * * * * * 
+* * * * * * * * * * * * * *
 * Choice   Operation      *
 *                         *
 * 1        Addition       *

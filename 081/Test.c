@@ -1,0 +1,1 @@
+// 1 question on double and triple pointers

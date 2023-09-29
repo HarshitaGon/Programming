@@ -12,11 +12,14 @@ int main(void) {
     scanf("%d", &ul);
 
     while (ll <= ul) {
-        if (is_armstrong(ll) && is_prime(ll))
+        bool ll_is_prime = is_prime(ll);
+        bool ll_is_armstrong = is_armstrong(ll);
+
+        if (ll_is_armstrong && ll_is_prime)
             printf("%d is prime as well as armstrong\n", ll);
-        else if (is_armstrong(ll))
+        else if (ll_is_armstrong)
             printf("%d is only armstrong\n", ll);
-        else if (is_prime(ll))
+        else if (ll_is_prime)
             printf("%d is only prime\n", ll);
         else
             printf("%d is neither prime nor armstrong\n", ll);

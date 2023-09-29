@@ -17,6 +17,7 @@
 // void print_sum(int a, int b) // function definition
 // {
 //     printf("Their sum is %d\n", a + b);
+//     return;
 // }
 
 #include <stdio.h>
@@ -50,3 +51,4 @@ when that if/else ends, or when the function returns prematurely.
 
 When an automatic variable is declared inside a loop, then it gets destroyed
 when the current iteration ends, or when the function returns prematurely.
+*/

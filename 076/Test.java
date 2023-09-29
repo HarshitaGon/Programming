@@ -11,11 +11,14 @@ class Test {
         ul = sc.nextInt();
 
         while (ll <= ul) {
-            if (is_armstrong(ll) && is_prime(ll))
+            boolean ll_is_prime = is_prime(ll);
+            boolean ll_is_armstrong = is_armstrong(ll);
+
+            if (ll_is_armstrong && ll_is_prime)
                 System.out.println(ll + " is prime as well as armstrong");
-            else if (is_armstrong(ll))
+            else if (ll_is_armstrong)
                 System.out.println(ll +" is only armstrong");
-            else if (is_prime(ll))
+            else if (ll_is_prime)
                 System.out.println(ll +" is only prime");
             else
                 System.out.println(ll + " is neither prime nor armstrong");

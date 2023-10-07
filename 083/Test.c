@@ -5,12 +5,12 @@ int main(void) {
     printf("Enter 10 integers: ");
 
     for (int i = 0; i < 10; ++i) {
-        scanf("%d", &x[i]);
+        scanf("%d", (x + i));
     }
 
     for (int i = 0; i < 10; ++i) {
-        if (x[i] > 0)
-            printf("%d ", x[i]);
+        if (*(x + i) > 0)
+            printf("%d ", *(x + i));
     }
 
     printf("\n");

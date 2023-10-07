@@ -22,12 +22,12 @@ int main(void) {
     int no_of_occurrences[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     while (x > 0) {
-        ++(no_of_occurrences[x % 10]);
+        ++(*(no_of_occurrences + (x % 10)));
         x = x / 10;
     }
 
     for (int i = 0; i < 10; ++i) {
-        printf("| %d | %d |\n", i, no_of_occurrences[i]);
+        printf("| %d | %d |\n", i, *(no_of_occurrences + i));
     }
 
     return 0;

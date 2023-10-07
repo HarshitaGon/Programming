@@ -5,13 +5,13 @@ int main(void) {
     printf("Enter 5 integers: ");
 
     for (int i = 0; i < 5; ++i) {
-        scanf("%d", &x[i]);
+        scanf("%d", (x + i));
     }
 
     int sum = 0;
 
     for (int i = 0; i < 5; ++i) {
-        sum = sum + x[i];
+        sum = sum + *(x + i);
     }
 
     printf("Their sum is %d\n", sum);

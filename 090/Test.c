@@ -3,8 +3,8 @@
 
 int main(void)
 {
-    int* ptr1 = malloc(sizeof (int));
-    int* ptr2 = malloc(sizeof (int));
+    int* ptr1 = (int*) malloc(sizeof (int));
+    int* ptr2 = (int*) malloc(sizeof (int));
 
     printf("Enter 2 integers: ");
     scanf("%d", ptr1);

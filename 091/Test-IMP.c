@@ -20,3 +20,27 @@ int* func(void)
 
     return ptr1;
 }
+
+
+
+// The following code is incorrect because by the time the address of x is
+// assigned to ptr, the variable gets destroyed.
+
+// #include <stdio.h>
+// #include <stdlib.h>
+
+// int* func(void);
+
+// int main(void)
+// {
+//     int* ptr = func();
+//     printf("%d\n", *ptr);
+//
+//     return 0;
+// }
+
+// int* func(void)
+// {
+//     int x = 10;
+//     return &x;
+// }

@@ -10,6 +10,9 @@ class Test {
 
         int[] no_of_occurrences = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
+        // In Java, all arrays are intialized with 0 by default.
+        // So, int[] no_of_occurrences = new int[10]; will also work.
+
         while (n > 0) {
             ++(no_of_occurrences[n % 10]);
             n = n / 10;
@@ -20,8 +23,6 @@ class Test {
         }
     }
 }
-
-
 
 /*
 

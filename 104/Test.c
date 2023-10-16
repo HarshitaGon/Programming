@@ -1,0 +1,1 @@
+/* compare the marks of 5 students in stack memory*/

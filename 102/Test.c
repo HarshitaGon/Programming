@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 struct student {
     int roll_number;
@@ -14,42 +15,105 @@ int main(void) {
     printf("Enter the details of student 1:\n");
 
     printf("Roll Number: ");
-    scanf("%d", &((*ptr).roll_number));
+    scanf("%d", &(ptr1->roll_number));
 
     printf("Marks1: ");
-    scanf("%lf", &((*ptr).marks1));
+    scanf("%lf", &(ptr1->marks1));
 
     printf("Marks2: ");
-    scanf("%lf", &((*ptr).marks2));
+    scanf("%lf", &(ptr1->marks2));
 
     printf("Marks3: ");
-    scanf("%lf", &((*ptr).marks3));
+    scanf("%lf", &(ptr1->marks3));
 
-    Student* ptr2 = (Student*) malloc();
+    Student* ptr2 = (Student*) malloc(sizeof (Student));
     printf("\nEnter the details of student 2:\n");
 
     printf("Roll Number: ");
-    scanf("%d", &s2.roll_number);
+    scanf("%d", &(ptr2->roll_number));
 
     printf("Marks1: ");
-    scanf("%lf", &s2.marks1);
+    scanf("%lf", &(ptr2->marks1));
 
     printf("Marks2: ");
-    scanf("%lf", &s2.marks2);
+    scanf("%lf", &(ptr2->marks2));
 
     printf("Marks3: ");
-    scanf("%lf", &s2.marks3);
+    scanf("%lf", &(ptr2->marks3));
 
-    double marks_student1 = s1.marks1 + s1.marks2 + s1.marks3;
-    double marks_student2 = s2.marks1 + s2.marks2 + s2.marks3;
+    double marks_student1 = (ptr1->marks1) + (ptr1->marks2) + (ptr1->marks3);
+    double marks_student2 = (ptr2->marks1) + (ptr2->marks2) + (ptr2->marks3);
 
     if (marks_student1 > marks_student2)
         printf("\nStudent 1 scored more than Student 2\n");
     else
         printf("\nStudent 2 scored more than Student 1\n");
 
+    free(ptr1);
+    free(ptr2);
+
     return 0;
 }
+
+
+
+
+// #include <stdio.h>
+// #include <stdlib.h>
+
+// struct student {
+//     int roll_number;
+//     double marks1;
+//     double marks2;
+//     double marks3;
+// };
+
+// typedef struct student Student;
+
+// int main(void) {
+//     Student* ptr1 = (Student*) malloc(sizeof (Student));
+//     printf("Enter the details of student 1:\n");
+
+//     printf("Roll Number: ");
+//     scanf("%d", &((*ptr1).roll_number));
+
+//     printf("Marks1: ");
+//     scanf("%lf", &((*ptr1).marks1));
+
+//     printf("Marks2: ");
+//     scanf("%lf", &((*ptr1).marks2));
+
+//     printf("Marks3: ");
+//     scanf("%lf", &((*ptr1).marks3));
+
+//     Student* ptr2 = (Student*) malloc(sizeof (Student));
+//     printf("\nEnter the details of student 2:\n");
+
+//     printf("Roll Number: ");
+//     scanf("%d", &((*ptr2).roll_number));
+
+//     printf("Marks1: ");
+//     scanf("%lf", &((*ptr2).marks1));
+
+//     printf("Marks2: ");
+//     scanf("%lf", &((*ptr2).marks2));
+
+//     printf("Marks3: ");
+//     scanf("%lf", &((*ptr2).marks3));
+
+//     double marks_student1 = (*ptr1).marks1 + (*ptr1).marks2 + (*ptr1).marks3;
+//     double marks_student2 = (*ptr2).marks1 + (*ptr2).marks2 + (*ptr2).marks3;
+
+//     if (marks_student1 > marks_student2)
+//         printf("\nStudent 1 scored more than Student 2\n");
+//     else
+//         printf("\nStudent 2 scored more than Student 1\n");
+
+//     free(ptr1);
+//     free(ptr2);
+
+//     return 0;
+// }
 
 
 /* using heap memory:

@@ -1,6 +1,7 @@
-/* compare the marks of 5 students in stack memory*/
+/* compare the marks of n students in Heap memory*/
 
 #include <stdio.h>
+#include <stdlib.h>
 
 struct student {
     int roll_number;
@@ -12,9 +13,13 @@ struct student {
 typedef struct student Student;
 
 int main(void) {
-    Student arr[5];
+    int n;
+    printf("Enter the no. of students: ");
+    scanf("%d", &n);
 
-    for (int i = 0; i < 5; ++i) {
+    Student* arr = (Student*) malloc(n * sizeof (Student));
+
+    for (int i = 0; i < n; ++i) {
         printf("\nEnter the details of student %d:\n", i + 1);
 
         printf("Roll Number: ");
@@ -36,7 +41,7 @@ int main(void) {
     double max_sum = 0;
     int topper = 0;
 
-    for (int i = 0; i < 5; ++i) {
+    for (int i = 0; i < n; ++i) {
         double sum = arr[i].marks1 + arr[i].marks2 + arr[i].marks3;
 
         if (sum > max_sum ) {
@@ -47,6 +52,8 @@ int main(void) {
 
     printf("Student %d got highest marks.\n", topper);
 
+    free((void*) arr);
+
     return 0;
 }
 
@@ -55,6 +62,7 @@ int main(void) {
 // using pointer notation :-
 
 // #include <stdio.h>
+// #include <stdlib.h>
 
 // struct student {
 //     int roll_number;
@@ -66,9 +74,13 @@ int main(void) {
 // typedef struct student Student;
 
 // int main(void) {
-//     Student arr[5];
+//     int n;
+//     printf("Enter the no. of students: ");
+//     scanf("%d", &n);
 
-//     for (int i = 0; i < 5; ++i) {
+//     Student* arr = (Student*) malloc(n * sizeof (Student));
+
+//     for (int i = 0; i < n; ++i) {
 //         printf("\nEnter the details of student %d:\n", i + 1);
 
 //         printf("Roll Number: ");
@@ -88,7 +100,7 @@ int main(void) {
 //     double max_sum = 0;
 //     int topper = 0;
 
-//     for (int i = 0; i < 5; ++i) {
+//     for (int i = 0; i < n; ++i) {
 //         double sum = ((*(arr + i)).marks1) + ((*(arr + i)).marks2) +
 //                      ((*(arr + i)).marks3);
 
@@ -99,6 +111,8 @@ int main(void) {
 //     }
 
 //     printf("Student %d got highest marks.\n", topper);
+
+//     free((void*) arr);
 
 //     return 0;
 // }

@@ -17,23 +17,27 @@ int main(void) {
     printf("Enter the no. of students: ");
     scanf("%d", &n);
 
-    Student* arr = (Student*) malloc(n * sizeof (Student));
+    Student** arr = (Student**) malloc(n * sizeof (Student*));
+
+    for (int i = 0; i < n; ++i) {
+        arr[i] = (Student*) malloc(sizeof (Student));
+    }
 
     for (int i = 0; i < n; ++i) {
         printf("\nEnter the details of student %d:\n", i + 1);
 
         printf("Roll Number: ");
-        scanf("%d", &((arr[i]).roll_number));
+        scanf("%d", &(*(arr + i)->roll_number));
 
         printf("Marks1: ");
-        scanf("%lf", &((arr[i]).marks1));
+        scanf("%lf", &(*(arr + i)->marks1));
 
         printf("Marks2: ");
-        scanf("%lf", &((arr[i]).marks2));
+        scanf("%lf", &(*(arr + i)->marks2));
 
 
         printf("Marks3: ");
-        scanf("%lf", &((arr[i]).marks3));
+        scanf("%lf", &(*(arr + i)->marks3));
     }
 
     printf("\n");
@@ -42,7 +46,7 @@ int main(void) {
     int topper = 0;
 
     for (int i = 0; i < n; ++i) {
-        double sum = arr[i].marks1 + arr[i].marks2 + arr[i].marks3;
+        double sum = arr[i]->marks1 + arr[i]->marks2 + arr[i]->marks3;
 
         if (sum > max_sum ) {
             max_sum = sum;
@@ -51,6 +55,10 @@ int main(void) {
     }
 
     printf("Student %d got highest marks.\n", topper + 1);
+
+    for (int i = 0; i < n; ++i) {
+        free((void*) arr[i]);
+    }
 
     free((void*) arr);
 
@@ -78,31 +86,36 @@ int main(void) {
 //     printf("Enter the no. of students: ");
 //     scanf("%d", &n);
 
-//     Student* arr = (Student*) malloc(n * sizeof (Student));
+//     Student** arr = (Student**) malloc(n * sizeof (Student*));
+
+//     for (int i = 0; i < n; ++i) {
+//         arr[i] = (Student*) malloc(sizeof (Student));
+//     }
 
 //     for (int i = 0; i < n; ++i) {
 //         printf("\nEnter the details of student %d:\n", i + 1);
 
 //         printf("Roll Number: ");
-//         scanf("%d", &((*(arr + i)).roll_number));
+//         scanf("%d", &((*(arr + i))->roll_number));
 
 //         printf("Marks1: ");
-//         scanf("%lf", &((*(arr + i)).marks1));
+//         scanf("%lf", &((*(arr + i))->marks1));
 
 //         printf("Marks2: ");
-//         scanf("%lf", &((*(arr + i)).marks2));
-
+//         scanf("%lf", &((*(arr + i))->marks2));
 
 //         printf("Marks3: ");
-//         scanf("%lf", &((*(arr + i)).marks3));
+//         scanf("%lf", &((*(arr + i))->marks3));
 //     }
+
+//     printf("\n");
 
 //     double max_sum = 0;
 //     int topper = 0;
 
 //     for (int i = 0; i < n; ++i) {
-//         double sum = ((*(arr + i)).marks1) + ((*(arr + i)).marks2) +
-//                      ((*(arr + i)).marks3);
+//         double sum = (*(arr + i))->marks1 + (*(arr + i))->marks2 +
+//                      (*(arr + i))->marks3;
 
 //         if (sum > max_sum ) {
 //             max_sum = sum;
@@ -110,7 +123,11 @@ int main(void) {
 //         }
 //     }
 
-//     printf("Student %d got highest marks.\n", topper);
+//     printf("Student %d got highest marks.\n", topper + 1);
+
+//     for (int i = 0; i < n; ++i) {
+//         free((void*) *(arr + i));
+//     }
 
 //     free((void*) arr);
 

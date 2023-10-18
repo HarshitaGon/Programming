@@ -1,4 +1,9 @@
-// solve by using Heap memory :-
+/*
+    arr is a pointer to pointer to Student on Stack.
+    arr stores the address of the first element of an array of pointers to Student
+    on the heap.
+    Every element of this array points to a Student variable on the heap.
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,33 +22,39 @@ int main(void) {
     printf("Enter the no. of students: ");
     scanf("%d", &n);
 
-    Student* arr = (Student*) malloc(n * sizeof (Student));
+    Student** arr = (Student**) malloc(n * sizeof (Student*));
+
+    for (int i = 0; i < n; ++i) {
+        arr[i] = (Student*) malloc(sizeof (Student));
+    }
 
     for (int i = 0; i < n; ++i) {
         printf("\nEnter the details of student %d:\n", i + 1);
 
         printf("Roll Number: ");
-        scanf("%d", &((arr[i]).roll_number));
+        scanf("%d", &((arr[i])->roll_number));
 
         printf("Marks1: ");
-        scanf("%lf", &((arr[i]).marks1));
+        scanf("%lf", &((arr[i])->marks1));
 
         printf("Marks2: ");
-        scanf("%lf", &((arr[i]).marks2));
+        scanf("%lf", &((arr[i])->marks2));
 
 
         printf("Marks3: ");
-        scanf("%lf", &((arr[i]).marks3));
+        scanf("%lf", &((arr[i])->marks3));
     }
 
-    for (int i = 0; i < ; ++i) {
+    for (int i = 0; i < n; ++i) {
         printf("\nDisplay the details of student %d:\n", i + 1);
-        //                          (arr + i)->roll_number
-        //                          (*(arr + i)).roll_number
-        printf("roll number: %d\n", (arr[i]).roll_number);
-        printf("marks1: %g\n", (arr[i]).marks1);
-        printf("marks2: %g\n", (arr[i]).marks2);
-        printf("marks3: %g\n", (arr[i]).marks3);
+        printf("roll number: %d\n", (arr[i])->roll_number);
+        printf("marks1: %g\n", (arr[i])->marks1);
+        printf("marks2: %g\n", (arr[i])->marks2);
+        printf("marks3: %g\n", (arr[i])->marks3);
+    }
+
+    for (int i = 0; i < n; ++i) {
+        free((void*) arr[i]);
     }
 
     free((void*) arr);
@@ -70,31 +81,39 @@ int main(void) {
 //     printf("Enter the no. of students: ");
 //     scanf("%d", &n);
 
-//     Student* arr = (Student*) malloc(n * sizeof (Student));
+//     Student** arr = (Student**) malloc(n * sizeof (Student*));
+
+//     for (int i = 0; i < n; ++i) {
+//         arr[i] = (Student*) malloc(n * sizeof (Student));
+//     }
 
 //     for (int i = 0; i < n; ++i) {
 //         printf("\nEnter the details of student %d:\n", i + 1);
 
 //         printf("Roll Number: ");
-//         scanf("%d", &((*(arr + i)).roll_number));
+//         scanf("%d", &((*(arr + i))->roll_number));
 
 //         printf("Marks1: ");
-//         scanf("%lf", &((*(arr + i)).marks1));
+//         scanf("%lf", &((*(arr + i))->marks1));
 
 //         printf("Marks2: ");
-//         scanf("%lf", &((*(arr + i)).marks2));
+//         scanf("%lf", &((*(arr + i))->marks2));
 
 
 //         printf("Marks3: ");
-//         scanf("%lf", &((*(arr + i)).marks3));
+//         scanf("%lf", &((*(arr + i))->marks3));
 //     }
 
 //     for (int i = 0; i < n; ++i) {
 //         printf("\nDisplay the details of student %d:\n", i + 1);
-//         printf("roll number: %d\n", (*(arr + i)).roll_number);
-//         printf("marks1: %g\n", (*(arr + i)).marks1);
-//         printf("marks2: %g\n", (*(arr + i)).marks2);
-//         printf("marks3: %g\n", (*(arr + i)).marks3);
+//         printf("roll number: %d\n", (*(arr + i))->roll_number);
+//         printf("marks1: %g\n", (*(arr + i))->marks1);
+//         printf("marks2: %g\n", (*(arr + i))->marks2);
+//         printf("marks3: %g\n", (*(arr + i))->marks3);
+//     }
+
+//     for (int i = 0; i < n; ++i) {
+//         free((void*) *(arr + i));
 //     }
 
 //     free((void*) arr);

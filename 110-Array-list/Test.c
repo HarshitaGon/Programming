@@ -385,8 +385,8 @@ void Array_List_int_remove(Array_List_int* ptr, int i)
 
     if (ptr->size < ptr->capacity / 2)
     {
-        ptr->capacity = ptr->size + 1;
-        ptr->arr = (int*) realloc(ptr->arr, ptr->capacity * sizeof (int));
+        ptr->capacity = (ptr->size == 0) ? 1 : ptr->size;
+        ptr->arr = realloc(ptr->arr, ptr->capacity * sizeof (int));
 
         if (ptr->arr == NULL)
         {
@@ -423,8 +423,8 @@ void Array_List_int_remove_range(Array_List_int* ptr, int i, int j)
 
     if (ptr->size < ptr->capacity / 2)
     {
-        ptr->capacity = ptr->size + 1;
-        ptr->arr = (int*) realloc(ptr->arr, ptr->capacity * sizeof (int));
+        ptr->capacity = (ptr->size == 0) ? 1 : ptr->size;
+        ptr->arr = realloc(ptr->arr, ptr->capacity * sizeof (int));
 
         if (ptr->arr == NULL)
         {
@@ -454,3 +454,7 @@ void destroy_Array_List_int(Array_List_int* ptr)
 {
     free(ptr->arr);
 }
+
+
+
+

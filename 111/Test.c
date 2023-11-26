@@ -13,59 +13,59 @@ int my_strcmp(char*, char*);
 
 int main(void)
 {
-    // printf("sizeof \"hello\" - %zu\n", sizeof "hello");
-    // printf("my_strlen(\"hello\") - %d\n", my_strlen("hello"));
+    printf("sizeof \"hello\" - %zu\n", sizeof "hello");
+    printf("my_strlen(\"hello\") - %d\n", my_strlen("hello"));
 
-    // printf("\nchar arr[] = \"hello world\";\n");
-    // char arr[] = "hello world";
+    printf("\nchar arr[] = \"hello world\";\n");
+    char arr[] = "hello world";
 
-    // printf("\nsizeof arr - %zu\n", sizeof arr);
-    // printf("my_strlen(arr) - %d\n", my_strlen(arr));
+    printf("\nsizeof arr - %zu\n", sizeof arr);
+    printf("my_strlen(arr) - %d\n", my_strlen(arr));
 
-    // printf("\narr[5] = '\\0';\n");
-    // arr[5] = '\0';
+    printf("\narr[5] = '\\0';\n");
+    arr[5] = '\0';
 
-    // printf("\nsizeof arr - %zu\n", sizeof arr);
-    // printf("my_strlen(arr) - %d\n", my_strlen(arr));
+    printf("\nsizeof arr - %zu\n", sizeof arr);
+    printf("my_strlen(arr) - %d\n", my_strlen(arr));
 
     printf("\nchar arr2[1000];\n");
     char arr2[1000];
 
-    // printf("\nmy_gets(arr2);\n");
-    // my_gets(arr2);
+    printf("\nmy_gets(arr2);\n");
+    my_gets(arr2);
 
-    // printf("\nsizeof arr2 - %zu\n", sizeof arr2);
-    // printf("my_strlen(arr2) - %d\n", my_strlen(arr2));
+    printf("\nsizeof arr2 - %zu\n", sizeof arr2);
+    printf("my_strlen(arr2) - %d\n", my_strlen(arr2));
 
-    // printf("\nmy_gets(arr2);\n");
-    // my_gets(arr2);
+    printf("\nmy_gets(arr2);\n");
+    my_gets(arr2);
 
-    // printf("\nsizeof arr2 - %zu\n", sizeof arr2);
-    // printf("my_strlen(arr2) - %d\n", my_strlen(arr2));
+    printf("\nsizeof arr2 - %zu\n", sizeof arr2);
+    printf("my_strlen(arr2) - %d\n", my_strlen(arr2));
 
-    // printf("\nmy_puts(arr2); putchar('\\n');\n");
-    // my_puts(arr2);
-    // putchar('\n');
+    printf("\nmy_puts(arr2); putchar('\\n');\n");
+    my_puts(arr2);
+    putchar('\n');
 
     printf("\nchar arr3[1000];\n");
     char arr3[1000];
 
-    // printf("\nmy_strcpy(arr3, arr2);\n");
-    // my_strcpy(arr3, arr2);
+    printf("\nmy_strcpy(arr3, arr2);\n");
+    my_strcpy(arr3, arr2);
 
-    // printf("\nmy_puts(arr3); putchar('\\n');\n");
-    // my_puts(arr3);
-    // putchar('\n');
+    printf("\nmy_puts(arr3); putchar('\\n');\n");
+    my_puts(arr3);
+    putchar('\n');
 
-    // printf("\nmy_gets(arr3);\n");
-    // my_gets(arr3);
+    printf("\nmy_gets(arr3);\n");
+    my_gets(arr3);
 
-    // printf("\nmy_strcat(arr3, arr2);\n");
-    // my_strcat(arr3, arr2);
+    printf("\nmy_strcat(arr3, arr2);\n");
+    my_strcat(arr3, arr2);
 
-    // printf("\nmy_puts(arr3); putchar('\\n');\n");
-    // my_puts(arr3);
-    // putchar('\n');
+    printf("\nmy_puts(arr3); putchar('\\n');\n");
+    my_puts(arr3);
+    putchar('\n');
 
     printf("\nmy_gets(arr2);\n");
     my_gets(arr2);

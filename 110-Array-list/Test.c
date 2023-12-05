@@ -151,7 +151,7 @@ int main(void)
 
     printf("---------------------------------------------------------------\n");
 
-    Array_List_int_remove_range(&a1, 1, 2);
+    Array_List_int_remove_range(&a1, 1, 3);
 
     int* array = Array_List_int_to_array(&a1);
 
@@ -402,7 +402,7 @@ void Array_List_int_remove(Array_List_int* ptr, int i)
 
 void Array_List_int_remove_range(Array_List_int* ptr, int i, int j)
 {
-    if ((i > j) || (i < 0) || (j >= ptr->size))
+    if ((i >= j) || (i < 0) || (j > ptr->size))
     {
         printf("\n-------------------------------------------");
         printf("\nArray_List_int_remove_range()");
@@ -412,14 +412,14 @@ void Array_List_int_remove_range(Array_List_int* ptr, int i, int j)
         exit(EXIT_FAILURE);
     }
 
-    int offset = j - i + 1;
+    int offset = j - i;
 
-    for (int k = j + 1; k < ptr->size; ++k)
+    for (int k = j; k < ptr->size; ++k)
     {
         (ptr->arr)[k - offset] = (ptr->arr)[k];
     }
 
-    ptr->size = ptr->size - offset;
+    ptr->size -= offset;
 
     if (ptr->size < ptr->capacity / 2)
     {
@@ -454,7 +454,5 @@ void destroy_Array_List_int(Array_List_int* ptr)
 {
     free(ptr->arr);
 }
-
-
 
 

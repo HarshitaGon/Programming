@@ -32,6 +32,12 @@ int String_last_index_of_char(String*, char);
 int String_last_index_of_String(String*, String*);
 int String_next_index_of_char(String*, char, int);
 int String_next_index_of_String(String*, String*, int);
+void String_substring(String*, String*, int, int); // i inclusive and j exclusive
+void String_remove(String*, int);
+void String_remove_range(String*, int, int); // i inclusive and j exclusive
+int String_compare_to(String*, String*);
+int String_compare_to_ignore_case(String*, String*);
+char* String_to_null_terminated_array_of_char(String*); // to_array_of_char() and to_String() in Java
 void String_destroy(String*);
 
 int main(void)
@@ -93,6 +99,23 @@ int main(void)
     // printf("%d\n", String_index_of_String(&s1, &s2));
 
     // printf("%d\n", String_last_index_of_String(&s1, &s2));
+
+    int index = 0;
+
+    while (true)
+    {
+        index = String_next_index_of_String(&s1, &s2, index);
+
+        if (index == - 1)
+        {
+            break;
+        }
+
+        printf("%d ", index);
+        ++index;
+    }
+
+    putchar('\n');
 
     printf("---------------------------------------------------------------\n");
 
@@ -475,6 +498,16 @@ int String_last_index_of_String(String* ptr_dst, String* ptr_src)
 
 int String_next_index_of_char(String* ptr, char c, int start)
 {
+    if (start < 0)
+    {
+        printf("\n-------------------------------------------");
+        printf("\nString_next_index_of_char()");
+        printf("\nINDEX OUT OF BOUNDS, EXITING DUE TO FAILURE");
+        printf("\n-------------------------------------------\n");
+
+        exit(EXIT_FAILURE);
+    }
+
     for (int i = start; i < ptr->size; ++i)
 	{
         if ((ptr->arr)[i] == c)
@@ -488,6 +521,16 @@ int String_next_index_of_char(String* ptr, char c, int start)
 
 int String_next_index_of_String(String* ptr_dst, String* ptr_src, int start)
 {
+    if (start < 0)
+    {
+        printf("\n-------------------------------------------");
+        printf("\nString_next_index_of_String()");
+        printf("\nINDEX OUT OF BOUNDS, EXITING DUE TO FAILURE");
+        printf("\n-------------------------------------------\n");
+
+        exit(EXIT_FAILURE);
+    }
+
     for (int i = start; i <= ptr_dst->size - ptr_src->size; ++i)
     {
         int j = 0;
@@ -511,11 +554,17 @@ int String_next_index_of_String(String* ptr_dst, String* ptr_src, int start)
     return -1;
 }
 
+// i is inclusive and j is exclusive.
+void String_substring(String* ptr_dst, String* ptr_src, int i, int j)
+{
+    // Similar to String_assign_using_String().
+    // Add bounds-checking.
+}
+
 void String_destroy(String* ptr)
 {
     free(ptr->arr);
 }
-
 
 
 

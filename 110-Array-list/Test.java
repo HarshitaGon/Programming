@@ -84,6 +84,7 @@ class Array_List_int
         arr[i] = n;
     }
 
+    //method overloading i.e add and add at index have same name.
     void add(int i, int n)
     {
         if ((i < 0) || (i > size))

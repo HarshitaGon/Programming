@@ -136,7 +136,9 @@ void my_gets(char* str)
         int c = getchar();
 
         if ((c == '\n') || (c == EOF))
+        {
             break;
+        }
 
         str[i] = (char) c;
         ++i;

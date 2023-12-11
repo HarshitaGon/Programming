@@ -13,9 +13,9 @@ class My_String
         capacity = 1;
     }
 
-    void assign(String src)
+    void assign(String ref_src)
     {
-        size = src.length();
+        size = ref_src.length();
 
         capacity = (size == 0) ? 1 : size;
 
@@ -23,7 +23,7 @@ class My_String
 
         for (int i = 0; i < size; ++i)
         {
-            arr[i] = src.charAt(i);
+            arr[i] = ref_src.charAt(i);
         }
     }
 
@@ -35,9 +35,9 @@ class My_String
         }
     }
 
-    void assign(My_String src)
+    void assign(My_String ref_src)
     {
-        size = src.size();
+        size = ref_src.size();
 
         capacity = (size == 0) ? 1 : size;
 
@@ -45,8 +45,99 @@ class My_String
 
         for (int i = 0; i < size; ++i)
         {
-            arr[i] = src.char_at(i);
+            arr[i] = ref_src.char_at(i);
         }
+    }
+
+    void add(char c)
+    {
+        if (size == capacity)
+        {
+            capacity = capacity * 2;
+
+            char[] new_arr = new char[capacity];
+
+            for (int i = 0; i < size; ++i)
+            {
+                new_arr[i] = arr[i];
+            }
+
+            arr = new_arr;
+        }
+
+        arr[size] = c;
+        ++size;
+    }
+
+    void add(int i, char c)
+    {
+        if ((i < 0) || (i > size))
+        {
+            throw new IndexOutOfBoundsException();
+        }
+
+        if (size == capacity)
+        {
+            capacity = capacity * 2;
+
+            char[] new_arr = new char[capacity];
+
+            for (int j = 0; j < size; ++j)
+            {
+                new_arr[j] = arr[j];
+            }
+
+            arr = new_arr;
+        }
+
+        for (int j = size - 1; j >= i; --j)
+        {
+            arr[j + 1] = arr[j];
+        }
+
+        arr[i] = c;
+        ++size;
+    }
+
+    void add(My_String ref_src)
+    {
+        if (size + ref_src.size > capacity)
+        {
+            capacity = size + ref_src.size;
+
+            char[] new_arr = new char[capacity];
+
+            for (int j = 0; j < size; ++j)
+            {
+                new_arr[j] = arr[j];
+            }
+
+            arr = new_arr;
+        }
+
+        for (int i = size, j = 0; j < ref_src.size; ++i, ++j)
+        {
+            // arr[i] = (ref_src.arr)[j];
+            // This works even though arr is a private member because dst and
+            // src are instances of the same class, and hence the private
+            // members of src can be accessed from dst.
+            // Still, this is considered bad practice.
+
+            arr[i] = ref_src.char_at(j);
+        }
+
+        size += ref_src.size;
+    }
+
+    void clear()
+    {
+        arr = new char[1];
+        size = 0;
+        capacity = 1;
+    }
+
+    void assign_using_user_input()
+    {
     }
 
     int size()
@@ -62,10 +153,6 @@ class My_String
         }
 
         return arr[i];
-    }
-
-    void add(char c)
-    {
     }
 }
 
@@ -89,6 +176,29 @@ class Test
         s2.assign(s1);
         s2.add('!');
 
+        s2.print();
+        System.out.println();
+
+        System.out.println("-------------------------------------------------");
+
+        s2.add(5, ' ');
+
+        s2.print();
+        System.out.println();
+
+        System.out.println("-------------------------------------------------");
+
+        s2.add(s1);
+
+        s2.print();
+        System.out.println();
+
+        System.out.println("-------------------------------------------------");
+
+        System.out.print("Enter a string: ");
+        s2.assign_using_user_input();
+
+        System.out.print("Your string: ");
         s2.print();
         System.out.println();
 

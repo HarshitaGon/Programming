@@ -136,9 +136,8 @@ class My_String
         capacity = 1;
     }
 
-    void assign_using_user_input()
-    {
-    }
+    // void assign_using_user_input()
+    // Skip this method.
 
     int size()
     {
@@ -160,6 +159,8 @@ class Test
 {
     public static void main(String[] args)
     {
+        Scanner sc = new Scanner(System.in);
+
         System.out.println("-------------------------------------------------");
 
         My_String s1 = new My_String();
@@ -196,7 +197,7 @@ class Test
         System.out.println("-------------------------------------------------");
 
         System.out.print("Enter a string: ");
-        s2.assign_using_user_input();
+        s2.assign(sc.nextLine());
 
         System.out.print("Your string: ");
         s2.print();

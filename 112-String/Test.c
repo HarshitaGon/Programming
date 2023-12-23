@@ -32,12 +32,12 @@ int String_last_index_of_char(String*, char);
 int String_last_index_of_String(String*, String*);
 int String_next_index_of_char(String*, char, int);
 int String_next_index_of_String(String*, String*, int);
-void String_substring(String*, String*, int, int);
+void String_assign_using_substring(String*, String*, int, int);
 void String_remove(String*, int);
 void String_remove_range(String*, int, int);
 int String_compare_to(String*, String*);
 int String_compare_to_ignore_case(String*, String*);
-char* String_to_null_terminated_array_of_char(String*); // to_array_of_char() and to_String() in Java
+char* String_to_null_terminated_array_of_char(String*);
 void String_destroy(String*);
 
 int main(void)
@@ -120,7 +120,7 @@ int main(void)
     printf("---------------------------------------------------------------\n");
 
     String_assign_using_null_terminated_array_of_char(&s1, "hello");
-    String_substring(&s2, &s1, 1, 4);
+    String_assign_using_substring(&s2, &s1, 1, 4);
 
     String_print(&s1);
     putchar('\n');
@@ -592,7 +592,8 @@ int String_next_index_of_String(String* ptr_dst, String* ptr_src, int start)
     return -1;
 }
 
-void String_substring(String* ptr_dst, String* ptr_src, int i, int j)
+void String_assign_using_substring(String* ptr_dst, String* ptr_src, int i,
+                                   int j)
 {
     if ((i >= j) || (i < 0) || (j > ptr_src->size))
 	{
@@ -830,5 +831,6 @@ void String_destroy(String* ptr)
 {
     free(ptr->arr);
 }
+
 
 

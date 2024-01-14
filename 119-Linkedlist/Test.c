@@ -27,8 +27,8 @@ typedef struct linked_list_int Linked_List_int;
 void create_empty_Linked_List_int(Linked_List_int*);
 bool Linked_List_int_is_empty(Linked_List_int*);
 void Linked_List_int_add(Linked_List_int*, int);
-int Linked_List_int_get(Linked_List_int*, int);
-int Linked_List_int_size(Linked_List_int*);
+int  Linked_List_int_get(Linked_List_int*, int);
+int  Linked_List_int_size(Linked_List_int*);
 void Linked_List_int_print_forwards(Linked_List_int*);
 void Linked_List_int_print_backwards(Linked_List_int*);
 void Linked_List_int_set(Linked_List_int*, int, int);
@@ -38,8 +38,8 @@ bool Linked_List_int_contains(Linked_List_int*, int);
 int Linked_List_int_index_of(Linked_List_int*, int);
 int Linked_List_int_last_index_of(Linked_List_int*, int);
 void Linked_List_int_remove(Linked_List_int*, int);
-int* Linked_List_int_to_array(Linked_List_int*);
 // Skip Linked_List_int_remove_range() - Too complicated.
+int* Linked_List_int_to_array(Linked_List_int*);
 void destroy_Linked_List_int(Linked_List_int*);
 
 int main(void)
@@ -157,51 +157,56 @@ bool Linked_List_int_is_empty(Linked_List_int* ptr)
     return ptr->size == 0;
 }
 
+// void Linked_List_int_add(Linked_List_int* ptr, int n)
+// {
+// 	Node* ptr_new_node = malloc(sizeof (Node));
+
+// 	if (ptr_new_node == NULL)
+// 	{
+//     	printf("\n-------------------------------------");
+//     	printf("\nLinked_List_int_add()");
+//     	printf("\nOUT OF MEMORY, EXITING DUE TO FAILURE");
+//     	printf("\n-------------------------------------\n");
+
+//     	exit(EXIT_FAILURE);
+//     }
+
+// 	ptr_new_node->value = n;
+// 	ptr_new_node->ptr_next_node = NULL;
+
+// 	if (ptr->size == 0) // i.e. ptr_head_node and ptr_tail_node both change.
+// 	{
+// 		ptr_new_node->ptr_previous_node = NULL;
+// 		ptr->ptr_head_node = ptr_new_node;
+// 		ptr->ptr_tail_node = ptr_new_node;
+// 	}
+
+// 	else // i.e. only ptr_tail_node changes.
+// 	{
+// 		ptr_new_node->ptr_previous_node = ptr->ptr_tail_node;
+// 		ptr->ptr_tail_node->ptr_next_node = ptr_new_node;
+// 		ptr->ptr_tail_node = ptr_new_node;
+// 	}
+
+// 	++(ptr->size);
+// }
+
 void Linked_List_int_add(Linked_List_int* ptr, int n)
 {
-	Node* ptr_new_node = malloc(sizeof (Node));
-
-	if (ptr_new_node == NULL)
-    {
-        printf("\n---------------------------------------------------");
-        printf("\nLinked_List_int_add()");
-        printf("\nOUT OF MEMORY, EXITING DUE TO FAILURE");
-        printf("\n---------------------------------------------------\n");
-
-        exit(EXIT_FAILURE);
-    }
-
-	ptr_new_node->ptr_next_node = NULL;
-	ptr_new_node->value = n;
-
-	if (ptr->size == 0)
-	{
-		ptr_new_node->ptr_previous_node = NULL;
-		ptr->ptr_head_node = ptr_new_node;
-		ptr->ptr_tail_node = ptr_new_node;
-	}
-
-	else
-	{
-		ptr->ptr_tail_node->ptr_next_node = ptr_new_node;
-		ptr_new_node->ptr_previous_node = ptr->ptr_tail_node;
-		ptr->ptr_tail_node = ptr_new_node;
-	}
-
-	++(ptr->size);
+	Linked_List_int_add_at_index(ptr, ptr->size, n);
 }
 
 int Linked_List_int_get(Linked_List_int* ptr, int i)
 {
 	if ((i < 0) || (i >= ptr->size))
-    {
-        printf("\n-------------------------------------------");
-        printf("\nLinked_List_int_get()");
-        printf("\nINDEX OUT OF BOUNDS, EXITING DUE TO FAILURE");
-        printf("\n-------------------------------------------\n");
+	{
+    	printf("\n-------------------------------------------");
+    	printf("\nLinked_List_int_get()");
+    	printf("\nINDEX OUT OF BOUNDS, EXITING DUE TO FAILURE");
+    	printf("\n-------------------------------------------\n");
 
-        exit(EXIT_FAILURE);
-    }
+    	exit(EXIT_FAILURE);
+	}
 
 	Node* ptr_current_node;
 
@@ -209,10 +214,10 @@ int Linked_List_int_get(Linked_List_int* ptr, int i)
 	{
 		ptr_current_node = ptr->ptr_head_node;
 
-		for (int j = 0; j < i; ++j)
-		{
-			ptr_current_node = ptr_current_node->ptr_next_node;
-		}
+    	for (int j = 0; j < i; ++j)
+	    {
+		    ptr_current_node = ptr_current_node->ptr_next_node;
+	    }
 	}
 
 	else
@@ -262,32 +267,32 @@ void Linked_List_int_print_backwards(Linked_List_int* ptr)
 void Linked_List_int_set(Linked_List_int* ptr, int i, int n)
 {
 	if ((i < 0) || (i >= ptr->size))
-    {
-        printf("\n-------------------------------------------");
-        printf("\nLinked_List_int_set()");
-        printf("\nINDEX OUT OF BOUNDS, EXITING DUE TO FAILURE");
-        printf("\n-------------------------------------------\n");
+	{
+    	printf("\n-------------------------------------------");
+    	printf("\nLinked_List_int_get()");
+    	printf("\nINDEX OUT OF BOUNDS, EXITING DUE TO FAILURE");
+    	printf("\n-------------------------------------------\n");
 
-        exit(EXIT_FAILURE);
-    }
+    	exit(EXIT_FAILURE);
+	}
 
 	Node* ptr_current_node;
 
-	if (i < (ptr->size + 1) / 2)
+	if (i < ptr->size / 2)
 	{
 		ptr_current_node = ptr->ptr_head_node;
 
-		for (int j = 0; j < i; ++j)
-		{
-			ptr_current_node = ptr_current_node->ptr_next_node;
-		}
+    	for (int j = 0; j < i; ++j)
+	    {
+		    ptr_current_node = ptr_current_node->ptr_next_node;
+	    }
 	}
 
 	else
 	{
 		ptr_current_node = ptr->ptr_tail_node;
 
-		for (int j = 0; j > ptr->size - i - 1; --j)
+		for (int j = 0; j < ptr->size - i - 1; ++j)
 		{
 			ptr_current_node = ptr_current_node->ptr_previous_node;
 		}
@@ -299,88 +304,83 @@ void Linked_List_int_set(Linked_List_int* ptr, int i, int n)
 void Linked_List_int_add_at_index(Linked_List_int* ptr, int i, int n)
 {
 	if ((i < 0) || (i > ptr->size))
-    {
-        printf("\n-------------------------------------------");
-        printf("\nLinked_List_int_add_at_index()");
-        printf("\nINDEX OUT OF BOUNDS, EXITING DUE TO FAILURE");
-        printf("\n-------------------------------------------\n");
+	{
+    	printf("\n-------------------------------------------");
+    	printf("\nLinked_List_int_add_at_index()");
+    	printf("\nINDEX OUT OF BOUNDS, EXITING DUE TO FAILURE");
+    	printf("\n-------------------------------------------\n");
 
-        exit(EXIT_FAILURE);
-    }
+    	exit(EXIT_FAILURE);
+	}
 
 	Node* ptr_new_node = malloc(sizeof (Node));
 
 	if (ptr_new_node == NULL)
-    {
-        printf("\n---------------------------------------------------");
-        printf("\nLinked_List_int_add()");
-        printf("\nOUT OF MEMORY, EXITING DUE TO FAILURE");
-        printf("\n---------------------------------------------------\n");
+	{
+    	printf("\n-------------------------------------");
+    	printf("\nLinked_List_int_add_at_index()");
+    	printf("\nOUT OF MEMORY, EXITING DUE TO FAILURE");
+    	printf("\n-------------------------------------\n");
 
-        exit(EXIT_FAILURE);
+    	exit(EXIT_FAILURE);
     }
 
 	ptr_new_node->value = n;
 
-	if (ptr->size == 0)
+	if (ptr->size == 0) // i.e. ptr_head_node and ptr_tail_node both change.
 	{
-		ptr_new_node->ptr_previous_node = NULL;
 		ptr_new_node->ptr_next_node = NULL;
+		ptr_new_node->ptr_previous_node = NULL;
 		ptr->ptr_head_node = ptr_new_node;
 		ptr->ptr_tail_node = ptr_new_node;
 	}
 
 	else
 	{
-		if (i == 0)
+		if (i == 0) // i.e. only ptr_head_node changes.
 		{
-			ptr_new_node->ptr_previous_node = NULL;
 			ptr_new_node->ptr_next_node = ptr->ptr_head_node;
+			ptr_new_node->ptr_previous_node = NULL;
 			ptr->ptr_head_node->ptr_previous_node = ptr_new_node;
 			ptr->ptr_head_node = ptr_new_node;
 		}
 
-		else if (i == ptr->size)
+		else if (i == ptr->size) // i.e. only ptr_tail_node changes.
 		{
-			ptr_new_node->ptr_previous_node = ptr->ptr_tail_node;
-			ptr_new_node->ptr_next_node = NULL;
-			ptr->ptr_tail_node->ptr_next_node = ptr_new_node;
-			ptr->ptr_tail_node = ptr_new_node;
+    		ptr_new_node->ptr_next_node = NULL;
+	    	ptr_new_node->ptr_previous_node = ptr->ptr_tail_node;
+		    ptr->ptr_tail_node->ptr_next_node = ptr_new_node;
+		    ptr->ptr_tail_node = ptr_new_node;
 		}
 
-		else
+		else // i.e. neither ptr_head_node nor ptr_tail_node changes.
 		{
 			Node* ptr_current_node;
 
 			if (i <= ptr->size / 2)
-			{
-				ptr_current_node = ptr->ptr_head_node;
+        	{
+		        ptr_current_node = ptr->ptr_head_node;
 
-				for (int j = 0; j < i - 1; ++j)
-				{
-					ptr_current_node = ptr_current_node->ptr_next_node;
-				}
+            	for (int j = 0; j < i - 1; ++j)
+	            {
+		            ptr_current_node = ptr_current_node->ptr_next_node;
+	            }
+		    }
 
-				ptr_new_node->ptr_next_node = ptr_current_node->ptr_next_node;
-				ptr_current_node->ptr_next_node->ptr_previous_node = ptr_new_node;
-				ptr_current_node->ptr_next_node = ptr_new_node;
-				ptr_new_node->ptr_previous_node = ptr_current_node;
-			}
+        	else
+	        {
+		        ptr_current_node = ptr->ptr_tail_node;
 
-			else
-			{
-				ptr_current_node = ptr->ptr_tail_node;
+        		for (int j = 0; j < ptr->size - i; ++j)
+		        {
+			        ptr_current_node = ptr_current_node->ptr_previous_node;
+		        }
+	        }
 
-				for (int j = 0; j < ptr->size - i; ++j)
-				{
-					ptr_current_node = ptr_current_node->ptr_previous_node;
-				}
-
-				ptr_new_node->ptr_next_node = ptr_current_node->ptr_next_node;
-				ptr_current_node->ptr_next_node->ptr_previous_node = ptr_new_node;
-				ptr_current_node->ptr_next_node = ptr_new_node;
-				ptr_new_node->ptr_previous_node = ptr_current_node;
-			}
+			ptr_new_node->ptr_next_node = ptr_current_node->ptr_next_node;
+			ptr_new_node->ptr_previous_node = ptr_current_node;
+			ptr_current_node->ptr_next_node->ptr_previous_node = ptr_new_node;
+			ptr_current_node->ptr_next_node = ptr_new_node;
 		}
 	}
 
@@ -390,7 +390,6 @@ void Linked_List_int_add_at_index(Linked_List_int* ptr, int i, int n)
 void Linked_List_int_clear(Linked_List_int* ptr)
 {
 	destroy_Linked_List_int(ptr);
-
 	create_empty_Linked_List_int(ptr);
 }
 
@@ -400,15 +399,15 @@ bool Linked_List_int_contains(Linked_List_int* ptr, int n)
 
 	while (ptr_current_node != NULL)
 	{
-        if (ptr_current_node->value == n)
+		if (ptr_current_node->value == n)
 		{
-		    return true;
-        }
+			return true;
+		}
 
 		ptr_current_node = ptr_current_node->ptr_next_node;
-    }
+	}
 
-    return false;
+	return false;
 }
 
 int Linked_List_int_index_of(Linked_List_int* ptr, int n)
@@ -417,15 +416,15 @@ int Linked_List_int_index_of(Linked_List_int* ptr, int n)
 
 	for (int i = 0; i < ptr->size; ++i)
 	{
-        if (ptr_current_node->value == n)
-		{
-		    return i;
-        }
+    	if (ptr_current_node->value == n)
+    	{
+        	return i;
+    	}
 
 		ptr_current_node = ptr_current_node->ptr_next_node;
-    }
+	}
 
-    return -1;
+	return -1;
 }
 
 int Linked_List_int_last_index_of(Linked_List_int* ptr, int n)
@@ -434,30 +433,30 @@ int Linked_List_int_last_index_of(Linked_List_int* ptr, int n)
 
 	for (int i = ptr->size - 1; i >= 0; --i)
 	{
-        if (ptr_current_node->value == n)
-		{
-		    return i;
-        }
+    	if (ptr_current_node->value == n)
+    	{
+        	return i;
+    	}
 
 		ptr_current_node = ptr_current_node->ptr_previous_node;
-    }
+	}
 
-    return -1;
+	return -1;
 }
 
 void Linked_List_int_remove(Linked_List_int* ptr, int i)
 {
 	if ((i < 0) || (i >= ptr->size))
-    {
-        printf("\n-------------------------------------------");
-        printf("\nLinked_List_int_remove()");
-        printf("\nINDEX OUT OF BOUNDS, EXITING DUE TO FAILURE");
-        printf("\n-------------------------------------------\n");
+	{
+    	printf("\n-------------------------------------------");
+    	printf("\nLinked_List_int_remove()");
+    	printf("\nINDEX OUT OF BOUNDS, EXITING DUE TO FAILURE");
+    	printf("\n-------------------------------------------\n");
 
-        exit(EXIT_FAILURE);
-    }
+    	exit(EXIT_FAILURE);
+	}
 
-	if (ptr->size == 1)
+	if (ptr->size == 1) // i.e. ptr_head_node and ptr_tail_node both change.
 	{
 		free(ptr->ptr_head_node);
 		ptr->ptr_head_node = NULL;
@@ -466,51 +465,51 @@ void Linked_List_int_remove(Linked_List_int* ptr, int i)
 
 	else
 	{
-		if (i == 0)
+		if (i == 0) // i.e. only ptr_head_node changes.
 		{
 			ptr->ptr_head_node = ptr->ptr_head_node->ptr_next_node;
 			free(ptr->ptr_head_node->ptr_previous_node);
 			ptr->ptr_head_node->ptr_previous_node = NULL;
 		}
 
-		else if (i == ptr->size)
+		else if (i == ptr->size - 1) // i.e. only ptr_tail_node changes.
 		{
-			ptr->ptr_tail_node = ptr->ptr_head_node->ptr_previous_node;
+			ptr->ptr_tail_node = ptr->ptr_tail_node->ptr_previous_node;
 			free(ptr->ptr_tail_node->ptr_next_node);
 			ptr->ptr_tail_node->ptr_next_node = NULL;
 		}
 
-		else
+		else // i.e. neither ptr_head_node nor ptr_tail_node changes.
 		{
 			Node* ptr_current_node;
 
 			if (i < ptr->size / 2)
-			{
-				ptr_current_node = ptr->ptr_head_node;
+        	{
+		        ptr_current_node = ptr->ptr_head_node;
 
-				for (int j = 0; j < i - 1; ++j)
-				{
-					ptr_current_node = ptr_current_node->ptr_next_node;
-				}
+            	for (int j = 0; j < i - 1; ++j)
+	            {
+		            ptr_current_node = ptr_current_node->ptr_next_node;
+	            }
+		    }
 
-				ptr_current_node->ptr_next_node = ptr_current_node->ptr_next_node->ptr_next_node;
-				free(ptr_current_node->ptr_next_node->ptr_previous_node);
-				ptr_current_node->ptr_next_node->ptr_previous_node = ptr_current_node;
-			}
+        	else
+	        {
+		        ptr_current_node = ptr->ptr_tail_node;
 
-			else
-			{
-				ptr_current_node = ptr->ptr_tail_node;
+        		for (int j = 0; j < ptr->size - i; ++j)
+		        {
+			        ptr_current_node = ptr_current_node->ptr_previous_node;
+		        }
+	        }
 
-				for (int j = 0; j < ptr->size - i; ++j)
-				{
-					ptr_current_node = ptr_current_node->ptr_previous_node;
-				}
+			ptr_current_node->ptr_next_node =
+			    ptr_current_node->ptr_next_node->ptr_next_node;
 
-				ptr_current_node->ptr_next_node = ptr_current_node->ptr_next_node->ptr_next_node;
-				free(ptr_current_node->ptr_next_node->ptr_previous_node);
-				ptr_current_node->ptr_next_node->ptr_previous_node = ptr_current_node;
-			}
+			free(ptr_current_node->ptr_next_node->ptr_previous_node);
+
+			ptr_current_node->ptr_next_node->ptr_previous_node =
+			    ptr_current_node;
 		}
 	}
 
@@ -523,13 +522,13 @@ int* Linked_List_int_to_array(Linked_List_int* ptr)
 
 	Node* ptr_current_node = ptr->ptr_head_node;
 
-    for (int i = 0; i < ptr->size; ++i)
-    {
-        array[i] = ptr_current_node->value;
+	for (int i = 0; i < ptr->size; ++i)
+	{
+    	array[i] = ptr_current_node->value;
 		ptr_current_node = ptr_current_node->ptr_next_node;
-    }
+	}
 
-    return array;
+	return array;
 }
 
 void destroy_Linked_List_int(Linked_List_int* ptr)
@@ -541,3 +540,6 @@ void destroy_Linked_List_int(Linked_List_int* ptr)
         free(ptr_temp);
     }
 }
+
+
+

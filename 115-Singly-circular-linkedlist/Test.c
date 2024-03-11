@@ -47,7 +47,7 @@ int main(void)
 
     Node* ptr_current_node = ptr_first_node;
 
-      while (true)
+    while (true)
     {
         printf("%d ", ptr_current_node->value);
         ptr_current_node = ptr_current_node->ptr_next_node;

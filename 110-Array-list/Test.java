@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 class Array_List_int
 {
     private int[] arr;

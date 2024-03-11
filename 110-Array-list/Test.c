@@ -323,6 +323,12 @@ void Array_List_int_clear(Array_List_int* ptr)
 
     ptr->size = 0;
     ptr->capacity = 1;
+
+    // {
+	//     destroy_Array_List_int(ptr);
+
+	//     create_empty_Array_List_int(ptr);
+    // }
 }
 
 bool Array_List_int_contains(Array_List_int* ptr, int n)

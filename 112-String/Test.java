@@ -662,5 +662,29 @@ class Test
     }
 }
 
+// class Test
+// {
+//     public static void main(String[] args)
+//     {
+//         My_String[] arr = new My_String[3];
+
+//         for (int i = 0; i < 3; ++i)
+//         {
+//             arr[i] = new My_String();
+//         }
+
+//         arr[0].assign("hello");
+//         arr[1].assign("world");
+//         arr[2].assign("hi");
+
+//         for (int i = 0; i < 3; ++i)
+//         {
+//             arr[i].print();
+//             System.out.println();
+//         }
+//     }
+// }
+
+
 
 

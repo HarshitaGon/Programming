@@ -163,6 +163,32 @@ int main(void)
     return 0;
 }
 
+// int main(void)
+// {
+// 	String** arr = malloc(3 * sizeof (String*));
+
+// 	for (int i = 0; i < 3; ++i)
+// 	{
+//     	arr[i] = malloc(sizeof (String));
+//     	String_create_empty(arr[i]);
+// 	}
+
+// 	String_assign_using_null_terminated_array_of_char(arr[0], "hello");
+// 	String_assign_using_null_terminated_array_of_char(arr[1], "world");
+// 	String_assign_using_null_terminated_array_of_char(arr[2], "hi");
+
+// 	for (int i = 0; i < 3; ++i)
+// 	{
+//     	String_print(arr[i]);
+//     	putchar('\n');
+
+//     	String_destroy(arr[i]);
+//     	free(arr[i]);
+// 	}
+
+// 	free(arr);
+// }
+
 void String_create_empty(String* ptr)
 {
     ptr->arr = malloc(sizeof (char));

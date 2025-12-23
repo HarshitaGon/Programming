@@ -4,7 +4,6 @@ class Test {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-
         System.out.print("Enter two integers: ");
         Integer ref1;
         ref1 = sc.nextInt();
@@ -44,7 +43,7 @@ class Test {
 //         // automatically understand that we are talking about the heap variable.
 //         System.out.println(ref1);
 
-//         // ref1 = 20; is changed to ref1 = Integer.valueOf(10); by the Java
+//         // ref1 = 20; is changed to ref1 = Integer.valueOf(20); by the Java
 //         // compiler.
 //         // So, the previous integer variable (heap) storing 10 is destroyed, and
 //         // a new integer variable (heap) storing 20 is created.

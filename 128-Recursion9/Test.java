@@ -1,9 +1,7 @@
 import java.util.Scanner;
 
-class Test
-{
-    public static void main(String[] args)
-    {
+class Test {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         int n;
@@ -28,10 +26,8 @@ class Test
         System.out.println();
     }
 
-    static void reverse(int[] arr, int i, int j)
-    {
-        if (i < j)
-        {
+    static void reverse(int[] arr, int i, int j) {
+        if (i < j) {
             swap(arr, i, j);
             reverse(arr, i + 1, j - 1);
         }

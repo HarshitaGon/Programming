@@ -14,7 +14,7 @@ class Test {
             System.out.println(n + " is not a palindrome");
     }
 
-    bool is_palindrome(int n) {
+    static boolean is_palindrome(int n) {
         int reverse = 0, temp = n;
 
         while (n > 0) {

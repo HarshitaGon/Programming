@@ -40,3 +40,26 @@ class Test {
         System.out.println("1: " + (remaining_amount / 1));
     }
 }
+
+
+
+
+
+
+/*
+
+Enter an amount: Rs. 5423
+
+The notes required are :-
+2000: 2
+500: 2
+200: 2
+100: 0
+50: 0
+20: 1
+10: 0
+5: 0
+2: 1
+1: 1
+
+*/

@@ -24,7 +24,6 @@ class Test {
         System.out.print("Marks2: ");
         ref.marks2 = sc.nextDouble();
 
-
         System.out.print("Marks3: ");
         ref.marks3 = sc.nextDouble();
 

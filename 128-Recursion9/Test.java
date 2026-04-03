@@ -24,6 +24,7 @@ class Test {
         }
 
         System.out.println();
+        sc.close();
     }
 
     static void reverse(int[] arr, int i, int j) {

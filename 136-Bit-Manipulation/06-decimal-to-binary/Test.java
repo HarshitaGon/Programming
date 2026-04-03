@@ -16,7 +16,7 @@ class Test {
             // binary = bit + binary;
             // n = n / 2;
 
-            //Using bitwise operator :-
+            // Using bitwise operator :-
             int bit = n & 1;
             binary = bit + binary;
             n = n >> 1;
@@ -34,7 +34,9 @@ class Test {
         String binOf_n = Integer.toBinaryString(n);
         System.out.println("Decimal to binary(using built-in method): " + binOf_n);
 
-        String binOf_N = to_binary_string(n);   //user defined function
+        String binOf_N = to_binary_string(n); // user defined function
         System.out.println("Decimal to binary(using user-defined method): " + binOf_N);
+
+        sc.close();
     }
 }
